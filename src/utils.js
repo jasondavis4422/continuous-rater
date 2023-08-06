@@ -22,33 +22,33 @@ import { writable } from 'svelte/store';
 // ************************************************
 
 // lab variables
-export const studyLocation = ''; // location of lab running mturk study
-export const labName = ''; // name of lab running HIT experiment 
-export const email = ''; // lab email for mturk
-export const studyAim = ''; // aim of mturk study 
-export const studyTasks = ''; // brief summary of HIT task for consent form
-export const experiment = ''; // name of experiment (should match collection name in firebase)
+export const studyLocation = 'Hanover, NH'; // location of lab running mturk study
+export const labName = 'CANlab'; // name of lab running HIT experiment 
+export const email = 'canlab.participate@gmail.com'; // lab email for mturk
+export const studyAim = 'to study emotion'; // aim of mturk study 
+export const studyTasks = 'watching videos'; // brief summary of HIT task for consent form
+export const experiment = 'imensa'; // name of experiment (should match collection name in firebase)
 
 // HIT variables
-export const HITPay = ''; // pay for HIT completion (format as X.XX with no dollar sign)
-export const userGroup = ''; // name of collection of participants for current HIT
-export const estHITTime = ''; // estimated time to complete HIT (in minutes)
+export const HITPay = '2.50'; // pay for HIT completion (format as X.XX with no dollar sign)
+export const userGroup = 'mTurk Group'; // name of collection of participants for current HIT
+export const estHITTime = '30'; // estimated time to complete HIT (in minutes)
 export const totalHITTime = estHITTime * 2; // total time provided for HIT (in minutes)
 
 // stimuli variables      
-export const ratingTypes = ['', '', '']; // array of rating types   
+export const ratingTypes = ['happy', 'sad', 'amused']; // array of rating types   
 
 // this configures path to proper firebase
 // COPY AND PASTE YOUR FIREBASE CONFIG HERE
 let firebaseConfig = {
-    apiKey: "",
-    authDomain: "",
+    apiKey: "AIzaSyCyPRkWEXI0JwBbKAcciuFsF_CD42z53lU",
+    authDomain: "imensa-mrater.firebaseapp.com",
     databaseURL: "",
-    projectId: "",
-    storageBucket: "",
-    messagingSenderId: "",
-    appId: "",
-    measurementId: ""
+    projectId: "imensa-mrater",
+    storageBucket: "imensa-mrater.appspot.com",
+    messagingSenderId: "997086945992",
+    appId: "1:997086945992:web:2d609329035af2e84f3bfd",
+    measurementId: "G-PT1DGH9BBP"
 };
 
 // ************************************************
