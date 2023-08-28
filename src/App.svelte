@@ -21,6 +21,7 @@
     import Loading from './components/Loading.svelte';
     import Header from './components/Header.svelte';
     import MTurkPreview from './pages/MTurkPreview.svelte';
+	import Debrief2 from './pages/Debrief2.svelte';
 
 	// path details
 	const ratingsPath = `${experiment}/ratings`;
@@ -302,15 +303,15 @@
 			ratingType={currRating}
 			time={time} 
 			pathway={ratingDocPathway} 
-			on:finished={() => updateState('debrief')} 
+			on:finished={() => updateState('debrief2')} 
 		></Task>
-	{:else if currentState === 'debrief'}
-		<Debrief
+	{:else if currentState === 'debrief2'}
+		<Debrief2
 			subPath={subjectPath}
 			email={email}
 			labName={labName}
 			numOptions={numOptions}
-		></Debrief>
+		></Debrief2>
 	{:else if currentState === 'complete'}
 		<Complete></Complete>
 	{/if}  	 
