@@ -2,6 +2,7 @@
 
 <!-- TODOs:
 	examine weird build errors on JS console when using with MTurk (GET ERROR)
+    Make sure to add changes at the bottom of if-else statement.
 -->
 
 <script>
@@ -311,12 +312,11 @@
 			email={email}
 			labName={labName}
 			numOptions={numOptions}
+            on:finished={() => updateState('task')} 
 		></Debrief2>
 	{:else if currentState === 'complete'}
-		<Complete></Complete>
+		<Demo></Demo>
 	{/if}  	 
 </div>
-
-
 
 

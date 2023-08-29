@@ -59,7 +59,8 @@
    
         const submitHIT = async () => {
             try {
-                rating_info = [value, value1, value2, value3, value4]
+                rating_info = [value, value1, value2, value3, value4];
+                dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4]]
                 await db.doc(subPath).update({
                     age,
                     sex,
@@ -74,6 +75,7 @@
 
                 await addDoc({
                 Ratings: rating_info,
+                Dimensions: dimensions
                 
             })
         }
@@ -91,7 +93,6 @@
             text-align: center;
         }
     
-      
     
         .form-box {
             padding: 2%;
@@ -115,7 +116,7 @@
            width: 200%;
            height: 200%;
 }
-    
+   
         .button {
             background-color: lightblue;
         }
