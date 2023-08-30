@@ -46,7 +46,10 @@
 	.container {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
+		align-items: left;
+		width: 200%;
+		
+	
 	}
 
 </style>

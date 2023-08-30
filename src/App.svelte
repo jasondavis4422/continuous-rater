@@ -315,7 +315,7 @@
             on:finished={() => updateState('task')} 
 		></Debrief2>
 	{:else if currentState === 'complete'}
-		<Demo></Demo>
+		<Complete></Complete>
 	{/if}  	 
 </div>
 

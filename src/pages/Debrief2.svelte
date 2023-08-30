@@ -70,14 +70,11 @@
                     birth,
                     handed,
                     feedback,
-                    HIT_complete: serverTime
-                });
-
-                await addDoc({
-                Ratings: rating_info,
-                Dimensions: dimensions
-                
-            })
+                    HIT_complete: serverTime,
+                    Ratings: rating_info,
+                    Dimensions: dimensions
+                    
+                });          
         }
             catch (error) {
                 console.error(error);
@@ -92,8 +89,6 @@
             max-width: 800px;
             text-align: center;
         }
-    
-    
         .form-box {
             padding: 2%;
                 background-color: rgba(255, 255, 255, 0.6);
@@ -102,8 +97,7 @@
                 box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);   
             text-align: left;
         }
-    
-        .label {
+            .label {
             font-weight: bold;
         }
     
@@ -116,12 +110,10 @@
            width: 200%;
            height: 200%;
 }
-   
         .button {
             background-color: lightblue;
         }
     </style>
-    
     
     <div class="container">
         <div class="form-box">
