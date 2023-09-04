@@ -3,10 +3,6 @@
 
     <script>
         import { db, params, serverTime } from '../utils.js';
-        import { createEventDispatcher } from 'svelte';
-
-         const dispatch = createEventDispatcher();
-
     	let value = [0];
         let value1 = [0];
         let value2 = [0];
@@ -60,22 +56,11 @@
         let Q3 = "After watching the video, how " + arr[2] + " do you feel on a scale from 1-100?";
         let Q4 = "After watching the video, how " + arr[3] + " do you feel on a scale from 1-100?";
         let Q5 = "After watching the video, how " + arr[4] + " do you feel on a scale from 1-100?";
-  
-        const insertData = async() => {
-            let rating_info = [value, value1, value2, value3, value4];
-            let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4]];
-            console.log(rating_info);
-            console.log(dimensions);
-            dispatch("finished");
-
-        }
-
-
-
+   
         const submitHIT = async () => {
             try {
                 let rating_info = [value, value1, value2, value3, value4];
-                let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4]];
+                let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4]]
                 await db.doc(subPath).update({
                     age,
                     sex,
@@ -129,7 +114,7 @@
             background-color: lightblue;
         }
     </style>
-   
+    
     <div class="container">
         <div class="form-box">
             <form name="mturk" action={postURL} method='POST'>
@@ -188,11 +173,3 @@
             </form>
         </div> 
     </div>
-        
-    
-    
-    
-    
-    
-    
-   
