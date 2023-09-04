@@ -62,21 +62,10 @@
                 let rating_info = [value, value1, value2, value3, value4];
                 let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4]]
                 await db.doc(subPath).update({
-                    age,
-                    sex,
-                    ethnicity,
-                    race,
-                    nativeLang,
-                    birth,
-                    handed,
-                    feedback,
-                    HIT_complete: serverTime,
-                });     
-                await db.doc(subPath).set({
                     Ratings: rating_info,
                     Dimensions: dimensions
-                });
-        }
+                });     
+            }
             catch (error) {
                 console.error(error);
             }
