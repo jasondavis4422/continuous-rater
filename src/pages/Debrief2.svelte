@@ -75,7 +75,7 @@
                     
                 });     
                 var refz = collection(db, "multiple-ratings")
-                const docRef = await db.doc(subPath).set(
+                await db.doc(subPath).set(
                     refz, {
                     Ratings: rating_info,
                     Dimensions: dimensions
