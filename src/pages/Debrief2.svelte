@@ -71,15 +71,11 @@
                     handed,
                     feedback,
                     HIT_complete: serverTime,
-                 
-                    
                 });     
-                var refz = collection(db, "multiple-ratings")
-                await db.doc(subPath).set(
-                    refz, {
+                await db.doc(subPath).set({
                     Ratings: rating_info,
                     Dimensions: dimensions
-                })
+                });
         }
             catch (error) {
                 console.error(error);
