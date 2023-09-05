@@ -23,16 +23,16 @@ import { writable } from 'svelte/store';
 
 // lab variables
 export const studyLocation = 'Hanover, NH'; // location of lab running mturk study
-export const labName = 'CANlab'; // name of lab running HIT experiment 
+export const labName = 'Cognitive and Affective Neuroscience Laboratory'; // name of lab running HIT experiment 
 export const email = 'canlab.participate@gmail.com'; // lab email for mturk
-export const studyAim = 'to study emotion'; // aim of mturk study 
-export const studyTasks = 'watching videos'; // brief summary of HIT task for consent form
+export const studyAim = 'to study affective responses based on certain animal-based naturalistic stimuli'; // aim of mturk study 
+export const studyTasks = 'watching videos and giving ratings'; // brief summary of HIT task for consent form
 export const experiment = 'imensa'; // name of experiment (should match collection name in firebase)
 
 // HIT variables
-export const HITPay = '2.50'; // pay for HIT completion (format as X.XX with no dollar sign)
+export const HITPay = '1.00'; // pay for HIT completion (format as X.XX with no dollar sign)
 export const userGroup = 'mTurk Group'; // name of collection of participants for current HIT
-export const estHITTime = '30'; // estimated time to complete HIT (in minutes)
+export const estHITTime = '45'; // estimated time to complete HIT (in minutes)
 export const totalHITTime = estHITTime * 2; // total time provided for HIT (in minutes)
 
 // stimuli variables      

@@ -56,15 +56,16 @@
         let Q3 = "After watching the video, how " + arr[2] + " do you feel on a scale from 1-100?";
         let Q4 = "After watching the video, how " + arr[3] + " do you feel on a scale from 1-100?";
         let Q5 = "After watching the video, how " + arr[4] + " do you feel on a scale from 1-100?";
-   
+
         const submitHIT = async () => {
             try {
                 let rating_info = [value, value1, value2, value3, value4];
                 let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4]]
-                await db.doc(subPath).update({
+                await db.doc(`${experiment}/ratings/${params.workerId}`).update({
                     Ratings: rating_info,
-                    Dimensions: dimensions
-                });     
+                    Dimensions: dimensions,
+                    created: firebase.database.ServerValue.TIMESTAMP 
+                }, );     
             }
             catch (error) {
                 console.error(error);
