@@ -77,7 +77,7 @@ export const getURLParams = () => {
     const params = {};
     let url = window.location.href;
     let m = window.location.href.match(/[\\?&]([^=]+)=([^&#]*)/g);
-    
+
     if (m) {
         let i = 0;
         while (i < m.length) {

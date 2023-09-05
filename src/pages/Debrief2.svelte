@@ -3,11 +3,15 @@
 
     <script>
         import { db, params, serverTime } from '../utils.js';
+        import { createEventDispatcher } from 'svelte';
+
     	let value = [0];
         let value1 = [0];
         let value2 = [0];
         let value3 = [0];
         let value4 = [0];
+
+        const dispatch = createEventDispatcher();
         
         // populating necessary variables
         export let subPath;
@@ -56,21 +60,32 @@
         let Q3 = "After watching the video, how " + arr[2] + " do you feel on a scale from 1-100?";
         let Q4 = "After watching the video, how " + arr[3] + " do you feel on a scale from 1-100?";
         let Q5 = "After watching the video, how " + arr[4] + " do you feel on a scale from 1-100?";
-
+  
         const submitHIT = async () => {
             try {
                 let rating_info = [value, value1, value2, value3, value4];
-                let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4]]
-                await db.doc(`${experiment}/ratings/${params.workerId}`).update({
+                let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4]];
+                await db.doc(subPath).set({
                     Ratings: rating_info,
                     Dimensions: dimensions,
                     created: firebase.database.ServerValue.TIMESTAMP 
-                }, );     
+
+                    
+                }, {merge: true});     
             }
             catch (error) {
                 console.error(error);
             }
+        
         };
+
+        const insertData = async () =>{
+            let rating_info = [value, value1, value2, value3, value4];
+            let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4]];
+            console.log(rating_info);
+            console.log(dimensions);
+            dispatch("finished");
+        }
 
     </script>
    
@@ -160,7 +175,7 @@
                     <!-- Left empty for spacing -->
                 </div> 
                 <br>
-                <button class="button is-success is-large" on:click={submitHIT}>Submit HIT</button>         
+                <button class="button is-success is-large" on:click={insertData}>Submit HIT</button>         
             </form>
         </div> 
     </div>
