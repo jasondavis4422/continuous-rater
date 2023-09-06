@@ -22,23 +22,7 @@
         let currID = params.assignmentId;
         let postURL = params.turkSubmitTo + '/mturk/externalSubmit';
 
-        let age = '';
-        let feedback = '';
-        let sex = '';
-        let ethnicity = '';
-        let race = [];
-        const raceOptions = [
-            'Asian / Asian-American',
-            'Black / African-American',
-            'Native-American / Alaskan-Native',
-            'Pacific-Islander / Native-Hawaiian',
-            'White / Caucasian',
-            'Other / Unknown'
-        ];
-        let nativeLang = '';
-        let birth = '';
-        let handed = '';
-
+     
         function shuffle(array) {
             let currentIndex = array.length, randomIndex;
             // While there remain elements to shuffle.

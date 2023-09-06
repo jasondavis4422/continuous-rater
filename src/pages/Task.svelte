@@ -16,16 +16,7 @@
 		userGroup,
 		labName,
 		email,
-	} from "../utils";
-
-	import {
-		App,
-		currVid,
-		currVidSrc,
-		currRating,
-		subjectPath,
-		ratingDocPathway,
-	} from "../App.svelte";
+	} from "../utils"
 
 	const dispatch = createEventDispatcher();
 
@@ -60,10 +51,7 @@
 	}
 
 	function handleEnd() {
-		console.log(currVid);
-		console.log(currVidSrc);
-		console.log(currRating);
-		console.log(subjectPath);
+		
 		dispatch("finished");
 	}
 
