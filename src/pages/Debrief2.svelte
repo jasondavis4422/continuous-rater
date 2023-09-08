@@ -10,11 +10,11 @@
         let value2 = [0];
         let value3 = [0];
         let value4 = [0];
-
+        
         const dispatch = createEventDispatcher();
         
         // populating necessary variables
-        export let subPath;
+        
         export let email;
         export let labName;
         export let numOptions;
@@ -66,9 +66,11 @@
             let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4]];
             console.log(rating_info);
             console.log(dimensions);
+            increment();
             dispatch("finished");
         }
 
+      
     </script>
    
     <style>
@@ -157,7 +159,7 @@
                     <!-- Left empty for spacing -->
                 </div> 
                 <br>
-                <button class="button is-success is-large" on:click={submitHIT}>Submit HIT</button>         
+                <button class="button is-success is-large" on:click={nextPage}>Submit HIT</button>         
             </form>
         </div> 
     </div>

@@ -48,6 +48,7 @@
     let currRating;
     let subjectPath;
     let ratingDocPathway;
+    let movieLinks = [];
     let currentState;
     let consentStatus;
     let alreadyWatched = [];
@@ -92,16 +93,20 @@
             );
         }
     };
-   
+
     // sets movieIndex to 0 and ratingIndex to random, pushes & sorts all movies
+    let CDN = "https://d1h4dm5ishe8rs.cloudfront.net/";
+    let fileType = ".mp4";
     let movieIndex = 0;
     let ratingIndex = Math.floor(Math.random() * ratingTypes.length);
     stimuliDoc.get().then(function (stimuliTable) {
         for (var field in stimuliTable.data()) {
             moviesRemaining.push(field);
+            movieLinks.push(CDN + field + fileType);
         }
         moviesRemaining.sort();
-        
+        movieLinks.sort();
+
         // check to see which movies subject has already viewed (if any)
         let currPath = `${ratingsPath}/${params.workerId}`;
         db.collection(currPath)
@@ -118,6 +123,7 @@
                 // see how many movies are left
                 numOptions = moviesRemaining.length;
                 console.log("moviesRemaining: ", moviesRemaining);
+                console.log(movieLinks);
                 // if any movie-rating pairings left, load and start
                 if (numOptions > 0) {
                     // choose random movie and rating type
@@ -134,8 +140,7 @@
                 }
             });
     });
-    
-    
+
     // *****************************
     // main function
     // *****************************
@@ -301,6 +306,11 @@
             console.error(error);
         }
     };
+   
+    const increment = async (cnt) => {
+        cnt++;
+        console.log(cnt);
+    };
 
     // function used to remove previously watched videos from array
     function removeItemOnce(arr, value) {
@@ -361,9 +371,11 @@
             ratingType={currRating}
             {time}
             pathway={ratingDocPathway}
-            subPath = {subjectPath}
-            movies = {moviesRemaining}
-            options = {numOptions}
+            movies={moviesRemaining}
+            links={movieLinks}
+            index={movieIndex}
+            options={numOptions}
+            on:finished={() => increment(movieIndex)}
             on:finished={() => updateState("debrief2")}
         />
     {:else if currentState === "debrief2"}
@@ -371,7 +383,7 @@
             {email}
             {labName}
             {numOptions}
-            pathway={ratingDocPathway} 
+            pathway={ratingDocPathway}
             on:finished={() => updateState("task")}
         />
     {:else if currentState === "complete"}
