@@ -60,13 +60,20 @@
             }
         
         };
+        
+        const newPage = async () =>{
+            let rating_info = [value, value1, value2, value3, value4];
+            let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4]];
+            console.log(rating_info);
+            console.log(dimensions);
+            dispatch("finished");
+        }
 
         const nextPage = async () =>{
             let rating_info = [value, value1, value2, value3, value4];
             let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4]];
             console.log(rating_info);
             console.log(dimensions);
-            increment();
             dispatch("finished");
         }
 
@@ -159,7 +166,7 @@
                     <!-- Left empty for spacing -->
                 </div> 
                 <br>
-                <button class="button is-success is-large" on:click={nextPage}>Submit HIT</button>         
+                <button class="button is-success is-large" on:click={newPage}>Submit HIT</button>         
             </form>
         </div> 
     </div>

@@ -306,10 +306,10 @@
             console.error(error);
         }
     };
-   
-    const increment = async (cnt) => {
-        cnt++;
-        console.log(cnt);
+    let n = 0;
+    const increment = async () => {
+        n++;
+        console.log(n);
     };
 
     // function used to remove previously watched videos from array
@@ -373,9 +373,9 @@
             pathway={ratingDocPathway}
             movies={moviesRemaining}
             links={movieLinks}
-            index={movieIndex}
+            index={n}
             options={numOptions}
-            on:finished={() => increment(movieIndex)}
+            on:finished={() => increment()}
             on:finished={() => updateState("debrief2")}
         />
     {:else if currentState === "debrief2"}
