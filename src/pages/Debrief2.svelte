@@ -18,6 +18,7 @@
         export let email;
         export let labName;
         export let numOptions;
+        export let pathway;
         let emailAddress = "mailto:" + email;
         let currID = params.assignmentId;
         let postURL = params.turkSubmitTo + '/mturk/externalSubmit';
@@ -49,13 +50,10 @@
             try {
                 let rating_info = [value, value1, value2, value3, value4];
                 let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4]];
-                await db.doc(subPath).set({
+                await db.doc(pathway).update({
                     Ratings: rating_info,
                     Dimensions: dimensions,
-                    created: firebase.database.ServerValue.TIMESTAMP 
-
-                    
-                }, {merge: true});     
+                });     
             }
             catch (error) {
                 console.error(error);
@@ -63,7 +61,7 @@
         
         };
 
-        const insertData = async () =>{
+        const nextPage = async () =>{
             let rating_info = [value, value1, value2, value3, value4];
             let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4]];
             console.log(rating_info);
@@ -159,7 +157,7 @@
                     <!-- Left empty for spacing -->
                 </div> 
                 <br>
-                <button class="button is-success is-large" on:click={insertData}>Submit HIT</button>         
+                <button class="button is-success is-large" on:click={submitHIT}>Submit HIT</button>         
             </form>
         </div> 
     </div>

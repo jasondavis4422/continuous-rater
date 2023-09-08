@@ -4,6 +4,7 @@
 	import { createEventDispatcher } from "svelte";
 	import RatingBox from "../RatingBox.svelte";
 	import CustomVideo from "../CustomVideo.svelte";
+	import Debrief2 from "../pages/Debrief2.svelte"
 
 	import {
 		db,
@@ -24,6 +25,9 @@
 	export let time;
 	export let pathway;
 	export let ratingType;
+	export let movies;
+	export let options;
+	console.log(options);
 	let paused = true;
 	let rating = 50.0;
 
@@ -41,6 +45,11 @@
 	const stimuliDoc = db.doc(stimuliPath);
 
 	let initExperiment = false;
+	let movieLinks = [];
+	let movieIndex = 0;
+	let currVid;
+	let currVidSrc;
+	let ratingDocPathway;
 
 	function handlePause() {
 		paused = true;
@@ -51,7 +60,10 @@
 	}
 
 	function handleEnd() {
-		
+		movieIndex += 1;
+		options -= 1;
+		console.log(movieIndex);
+		console.log(options);
 		dispatch("finished");
 	}
 
@@ -78,45 +90,45 @@
 		return arr;
 	}
 
-	// check to see which movies subject has already viewed (if any)
-	let currPath = `${ratingsPath}/${params.workerId}`;
-	db.collection(currPath)
-		.get()
-		.then(function (ratingList) {
-			// removes already completed movies from option set
-			ratingList.forEach(function (doc) {
-				moviesRemaining = removeItemOnce(
-					moviesRemaining,
-					doc.id.split("-")[0]
-				);
-			});
-			// see how many movies are left
-			numOptions = moviesRemaining.length;
-			console.log("moviesRemaining: ", moviesRemaining);
-			// if any movie-rating pairings left, load and start
-			if (numOptions > 0) {
-				// choose random movie and rating type
-				let movieIndex = Math.floor(
-					Math.random() * moviesRemaining.length
-				);
-				let ratingIndex = Math.floor(
-					Math.random() * ratingTypes.length
-				);
-				currVid = moviesRemaining[movieIndex];
-				currRating = ratingTypes[ratingIndex];
-				let vidPlusRating = `${currVid}-${currRating}`;
-				ratingDocPathway = `${ratingsPath}/${params.workerId}/${vidPlusRating}`;
-				// grab URL for video sourcing
-				currVidSrc = stimuliTable.data()[currVid];
-				updateState("consent");
-			} else {
-				console.log("no options left!");
-				updateState("complete");
-			}
-		});
+   // sets movieIndex to 0 and ratingIndex to random, pushes & sorts all movies
+    
+	let CDN = 'https://d1h4dm5ishe8rs.cloudfront.net/';
+	let fileType = ".mp4";
+    let ratingIndex = Math.floor(Math.random() * ratingTypes.length);
+    stimuliDoc.get().then(function (stimuliTable) {
+        for (var field in stimuliTable.data()) {
+            moviesRemaining.push(field);
+			movieLinks.push(CDN + field + fileType);
+        }
+        moviesRemaining.sort();
+		movieLinks.sort();
+		console.log(moviesRemaining);
+	    console.log(movieLinks);
+	});
+
+	if (options > 0) {
+                    // choose random movie and rating type
+                    currVid = movies[movieIndex];
+					console.log(currVid);
+                    let vidPlusRating = `${currVid}-${ratingType}`;
+					console.log(vidPlusRating);
+                    ratingDocPathway = `${ratingsPath}/${params.workerId}/${vidPlusRating}`;
+					console.log(ratingDocPathway);
+                    // grab URL for video sourcing
+                    currVidSrc = movieLinks[movieIndex];
+					console.log(currVidSrc);
+                } 
+                  
+
+
+
+
+
 </script>
 
 <main>
+	<div class = "content">
+	</div>
 	<div class="container">
 		<CustomVideo
 			{src}

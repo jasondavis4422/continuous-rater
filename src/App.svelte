@@ -114,6 +114,7 @@
                         doc.id.split("-")[0]
                     );
                 });
+
                 // see how many movies are left
                 numOptions = moviesRemaining.length;
                 console.log("moviesRemaining: ", moviesRemaining);
@@ -126,7 +127,6 @@
                     ratingDocPathway = `${ratingsPath}/${params.workerId}/${vidPlusRating}`;
                     // grab URL for video sourcing
                     currVidSrc = stimuliTable.data()[currVid];
-                    console.log(currVidSrc);
                     updateState("consent");
                 } else {
                     console.log("no options left!");
@@ -134,6 +134,8 @@
                 }
             });
     });
+    
+    
     // *****************************
     // main function
     // *****************************
@@ -359,14 +361,17 @@
             ratingType={currRating}
             {time}
             pathway={ratingDocPathway}
+            subPath = {subjectPath}
+            movies = {moviesRemaining}
+            options = {numOptions}
             on:finished={() => updateState("debrief2")}
         />
     {:else if currentState === "debrief2"}
         <Debrief2
-            subPath={subjectPath}
             {email}
             {labName}
             {numOptions}
+            pathway={ratingDocPathway} 
             on:finished={() => updateState("task")}
         />
     {:else if currentState === "complete"}
