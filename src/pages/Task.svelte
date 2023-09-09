@@ -95,10 +95,10 @@
 </script>
 
 <main>
-	<div class="content" />
+	
 	<div class="container">
 		<CustomVideo
-			{src}
+			src = {currVidSrc}
 			bind:time
 			on:pause={handlePause}
 			on:play={handlePlay}

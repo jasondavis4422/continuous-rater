@@ -127,12 +127,15 @@
                 // if any movie-rating pairings left, load and start
                 if (numOptions > 0) {
                     // choose random movie and rating type
-                    currVid = moviesRemaining[movieIndex];
+                    currVid = moviesRemaining[n];
+                    console.log(currVid);
                     currRating = ratingTypes[ratingIndex];
+                    console.log(currRating);
                     let vidPlusRating = `${currVid}-${currRating}`;
+                    console.log(vidPlusRating);
                     ratingDocPathway = `${ratingsPath}/${params.workerId}/${vidPlusRating}`;
                     // grab URL for video sourcing
-                    currVidSrc = stimuliTable.data()[currVid];
+                    currVidSrc = movieLinks[n];
                     updateState("consent");
                 } else {
                     console.log("no options left!");
@@ -367,7 +370,7 @@
         />
     {:else if currentState === "task"}
         <Task
-            src={currVidSrc}
+           
             ratingType={currRating}
             {time}
             pathway={ratingDocPathway}
