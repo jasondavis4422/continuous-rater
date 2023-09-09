@@ -125,7 +125,7 @@
                 console.log("moviesRemaining: ", moviesRemaining);
                 console.log(movieLinks);
                 // if any movie-rating pairings left, load and start
-                if (numOptions > 0) {
+                if (o > 0) {
                     // choose random movie and rating type
                     currVid = moviesRemaining[n];
                     console.log(currVid);
@@ -310,8 +310,10 @@
         }
     };
     let n = 0;
+    let o = 9;
     const increment = async () => {
         n++;
+        o--;
         console.log(n);
     };
 

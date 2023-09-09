@@ -47,6 +47,7 @@
         let Q5 = "After watching the video, how " + arr[4] + " do you feel on a scale from 1-100?";
   
         const submitHIT = async () => {
+            
             try {
                 let rating_info = [value, value1, value2, value3, value4];
                 let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4]];
@@ -58,15 +59,17 @@
             catch (error) {
                 console.error(error);
             }
-        
+            dispatch("finished"); 
         };
         
         const newPage = async () =>{
-            let rating_info = [value, value1, value2, value3, value4];
-            let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4]];
-            console.log(rating_info);
-            console.log(dimensions);
-            dispatch("finished");
+                let rating_info = [value, value1, value2, value3, value4];
+                let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4]];
+                dispatch("finished");  
+                await db.doc(pathway).update({
+                    Ratings: rating_info,
+                    Dimensions: dimensions,
+                });     
         }
 
         const nextPage = async () =>{
@@ -166,7 +169,7 @@
                     <!-- Left empty for spacing -->
                 </div> 
                 <br>
-                <button class="button is-success is-large" on:click={newPage}>Submit HIT</button>         
+                <button class="button is-success is-large" on:click={newPage}>NEXT PAGE</button>         
             </form>
         </div> 
     </div>
