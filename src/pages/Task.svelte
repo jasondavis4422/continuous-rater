@@ -21,9 +21,8 @@
 
 	const dispatch = createEventDispatcher();
 
-	export let src;
 	export let time;
-	export let pathway;
+
 	export let ratingType;
 	export let movies;
 	export let options;
@@ -104,7 +103,7 @@
 			on:play={handlePlay}
 			on:finished={handleEnd}
 		/>
-		<RatingBox {pathway} {rating} bind:time bind:paused {ratingType} />
+		<RatingBox pathway = {ratingDocPathway} {rating} bind:time bind:paused {ratingType} />
 		<h2 style="text-align:center">
 			Please rate how <strong>{ratingType}</strong> you feel
 		</h2>

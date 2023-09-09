@@ -2,7 +2,7 @@
     there is a single button that saves responses to firebase and submits HIT  -->
 
     <script>
-        import { db, params, serverTime } from '../utils.js';
+        import { db, params, serverTime, experiment, userGroup } from '../utils'
         import { createEventDispatcher } from 'svelte';
 
     	let value = [0];
@@ -10,7 +10,14 @@
         let value2 = [0];
         let value3 = [0];
         let value4 = [0];
-        
+
+        const ratingsPath = `${experiment}/ratings`;
+	    const ratingsDoc = db.doc(ratingsPath);
+	    const subjectGroupPath = `${experiment}/subjects/${userGroup}`;
+	    const subjectGroupCollection = db.collection(subjectGroupPath);
+	    const stimuliPath = `${experiment}/stimuli`;
+	    const stimuliDoc = db.doc(stimuliPath);
+
         const dispatch = createEventDispatcher();
         
         // populating necessary variables
@@ -18,11 +25,35 @@
         export let email;
         export let labName;
         export let numOptions;
-        export let pathway;
+        export let videoIndex;
+        
+        export let ratingType;
+	    export let movies;
+	    export let options;
+	    export let links;
+	    export let index; 
+
         let emailAddress = "mailto:" + email;
         let currID = params.assignmentId;
         let postURL = params.turkSubmitTo + '/mturk/externalSubmit';
+        let moviesRemaining = [];
 
+        let currVid;
+	    let currVidSrc;
+	    let ratingDocPathway;
+
+        if (options > 0) {
+		// choose random movie and rating type
+		currVid = movies[index];
+
+		let vidPlusRating = `${currVid}-${ratingType}`;
+
+		ratingDocPathway = `${ratingsPath}/${params.workerId}/${vidPlusRating}`;
+
+		// grab URL for video sourcing
+		currVidSrc = links[index];
+		console.log(currVidSrc);
+	}
      
         function shuffle(array) {
             let currentIndex = array.length, randomIndex;
@@ -63,23 +94,25 @@
         };
         
         const newPage = async () =>{
+            if (videoIndex != 9){
                 let rating_info = [value, value1, value2, value3, value4];
                 let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4]];
-                dispatch("finished");  
-                await db.doc(pathway).update({
+                dispatch("finished");   
+                await db.doc(ratingDocPathway).update({
                     Ratings: rating_info,
                     Dimensions: dimensions,
-                });     
+                });    
+            } 
+            else
+            {
+                let rating_info = [value, value1, value2, value3, value4];
+                let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4]];
+                await db.doc(ratingDocPathway).update({
+                    Ratings: rating_info,
+                    Dimensions: dimensions,
+                });   
+            }
         }
-
-        const nextPage = async () =>{
-            let rating_info = [value, value1, value2, value3, value4];
-            let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4]];
-            console.log(rating_info);
-            console.log(dimensions);
-            dispatch("finished");
-        }
-
       
     </script>
    

@@ -309,7 +309,8 @@
             console.error(error);
         }
     };
-    let n = 0;
+    let n = 7; // change to 0
+    let d = 7; // change to 0
     let o = 9;
     const increment = async () => {
         n++;
@@ -317,6 +318,10 @@
         console.log(n);
     };
 
+    const increment2 = async () => {
+        d++;
+        console.log(d);
+    }
     // function used to remove previously watched videos from array
     function removeItemOnce(arr, value) {
         var index = arr.indexOf(value);
@@ -375,7 +380,6 @@
            
             ratingType={currRating}
             {time}
-            pathway={ratingDocPathway}
             movies={moviesRemaining}
             links={movieLinks}
             index={n}
@@ -388,7 +392,13 @@
             {email}
             {labName}
             {numOptions}
-            pathway={ratingDocPathway}
+            movies={moviesRemaining}
+            links={movieLinks}
+            index={d}
+            videoIndex = {n}
+            options={numOptions}
+            ratingType={currRating}
+            on:finished={() => increment2()}
             on:finished={() => updateState("task")}
         />
     {:else if currentState === "complete"}
