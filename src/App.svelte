@@ -128,11 +128,11 @@
                 if (o > 0) {
                     // choose random movie and rating type
                     currVid = moviesRemaining[n];
-                    console.log(currVid);
+                  
                     currRating = ratingTypes[ratingIndex];
-                    console.log(currRating);
+                    
                     let vidPlusRating = `${currVid}-${currRating}`;
-                    console.log(vidPlusRating);
+                    
                     ratingDocPathway = `${ratingsPath}/${params.workerId}/${vidPlusRating}`;
                     // grab URL for video sourcing
                     currVidSrc = movieLinks[n];
@@ -309,8 +309,8 @@
             console.error(error);
         }
     };
-    let n = 7; // change to 0
-    let d = 7; // change to 0
+    let n = 0; 
+    let d = 0;
     let o = 9;
     const increment = async () => {
         n++;
@@ -360,7 +360,7 @@
     {:else if currentState === "instructions1"}
         <Instructions1
             ratingType={currRating}
-            {numOptions}
+    
             on:finished={() => updateState("demo")}
         />
     {:else if currentState === "demo"}

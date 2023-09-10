@@ -89,7 +89,7 @@
 
 		// grab URL for video sourcing
 		currVidSrc = links[index];
-		console.log(currVidSrc);
+	
 	}
 </script>
 
