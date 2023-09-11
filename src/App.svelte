@@ -309,8 +309,8 @@
             console.error(error);
         }
     };
-    let n = 7; 
-    let d = 7;
+    let n = 7; // CHANGE THIS TO 0 (VIDEOINDEX)
+    let d = 7; // CHANGE THIS TO 0 (DEBRIEFINDEX)
     let o = 9;
     const increment = async () => {
         n++;
