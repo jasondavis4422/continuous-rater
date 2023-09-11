@@ -309,8 +309,8 @@
             console.error(error);
         }
     };
-    let n = 0; 
-    let d = 0;
+    let n = 7; 
+    let d = 7;
     let o = 9;
     const increment = async () => {
         n++;
