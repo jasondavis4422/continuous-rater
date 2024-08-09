@@ -37,10 +37,12 @@
         let currID = params.assignmentId;
         let postURL = 'https://www.prolific.com/'
         let moviesRemaining = [];
+        let numVideos = 9;
 
         let currVid;
 	    let currVidSrc;
 	    let ratingDocPathway;
+        let botCheck = 3;
 
         if (options > 0) {
 		// choose random movie and rating type
@@ -92,12 +94,22 @@
             }
             dispatch("finished"); 
         };
-        
+     
         const newPage = async () =>{
-            if (videoIndex != 9){
+            if (videoIndex % botCheck == 0 && videoIndex != numVideos){
                 let rating_info = [value, value1, value2, value3, value4];
                 let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4]];
-                dispatch("finished");   
+                dispatch("botcheck")
+                await db.doc(ratingDocPathway).update({
+                    Ratings: rating_info,
+                    Dimensions: dimensions,
+                });    
+            }  
+            
+           else if (videoIndex != numVideos){
+                let rating_info = [value, value1, value2, value3, value4];
+                let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4]];
+                dispatch("finished")
                 await db.doc(ratingDocPathway).update({
                     Ratings: rating_info,
                     Dimensions: dimensions,
@@ -107,6 +119,7 @@
             {
                 let rating_info = [value, value1, value2, value3, value4];
                 let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4]];
+                dispatch("complete")
                 await db.doc(ratingDocPathway).update({
                     Ratings: rating_info,
                     Dimensions: dimensions,

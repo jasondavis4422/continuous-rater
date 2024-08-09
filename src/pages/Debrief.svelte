@@ -3,6 +3,8 @@
 
 <script>
     import { db, params, serverTime } from "../utils.js";
+    import { createEventDispatcher } from 'svelte';
+
 
     // populating necessary variables
     export let subPath;
@@ -12,6 +14,7 @@
     let emailAddress = "mailto:" + email;
     let currID = params.assignmentId;
     let postURL = params.turkSubmitTo + "/mturk/externalSubmit";
+    const dispatch = createEventDispatcher();
 
     let age = "";
     let feedback = "";
@@ -29,9 +32,10 @@
     let nativeLang = "";
     let birth = "";
     let handed = "";
+    let movieAgain = "";
 
     const submitHIT = async () => {
-        try {
+        dispatch("complete")
             await db.doc(subPath).update({
                 age,
                 sex,
@@ -42,10 +46,9 @@
                 handed,
                 feedback,
                 HIT_complete: serverTime,
+                movieAgain
             });
-        } catch (error) {
-            console.error(error);
-        }
+           
     };
 </script>
 
@@ -188,6 +191,25 @@
                     />
                 </div>
             </label>
+
+            <label class="label"
+            ><u>Would you like to watch another movie?</u>
+            <div class="options">
+                <label class="radio">
+                    <input type="radio" bind:group={movieAgain} value={"yes"} />
+                    Yes
+                </label>
+                <label class="radio">
+                    <input type="radio" bind:group={movieAgain} value={"no"} />
+                    No
+                </label>
+                <label class="radio">
+                    <input type="radio" bind:group={movieAgain} value={"maybe"} />
+                    Maybe
+                </label>
+                <br />
+            </div>
+        </label>
 
             <p>
                 You can email <a href={emailAddress}>{labName}</a>
