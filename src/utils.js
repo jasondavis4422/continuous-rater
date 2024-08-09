@@ -37,6 +37,7 @@ export const totalHITTime = estHITTime * 2; // total time provided for HIT (in m
 
 // stimuli variables      
 export const ratingTypes = ['happy', 'sad', 'amused']; // array of rating types   
+let main = 1000000000;
 
 // this configures path to proper firebase
 // COPY AND PASTE YOUR FIREBASE CONFIG HERE
@@ -69,8 +70,10 @@ export const dev = DEV_MODE ? writable(true) : writable(false);
 firebase.initializeApp(firebaseConfig);
 export const db = firebase.firestore();
 export const auth = firebase.auth();
-export const serverTime = firebase.firestore.Timestamp.now();
+export const serverTime = firebase.firestore.Timestamp.now()
 
+let ID = Math.floor(Math.random() * 1000000000);
+const str = ID.toString();
 // Functions to parse the URL to get workerID, hitID, and assignmentID
 const unescapeURL = (s) => decodeURIComponent(s.replace(/\+/g, '%20'));
 export const getURLParams = () => {
@@ -97,6 +100,10 @@ export const getURLParams = () => {
             params.hitId = 'test-hit';
             params.turkSubmitTo = 'test-submit';
         }
+        params.workerId = str
+            params.assignmentId = str
+            params.hitId = str
+            params.turkSubmitTo = str;
     }
     return params;
 };
