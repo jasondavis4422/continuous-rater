@@ -97,7 +97,7 @@
     // sets movieIndex to 0 and ratingIndex to random, pushes & sorts all movies
     let CDN = "https://d1h4dm5ishe8rs.cloudfront.net/";
     let fileType = ".mp4";
-    let movieIndex = 5;
+    let movieIndex = 0;
     let ratingIndex = Math.floor(Math.random() * ratingTypes.length);
     stimuliDoc.get().then(function (stimuliTable) {
         for (var field in stimuliTable.data()) {
@@ -310,7 +310,7 @@
         }
     };
      // CHANGE THIS TO 0 (VIDEOINDEX)
-    let debriefIndex = 5; // CHANGE THIS TO 0 (DEBRIEFINDEX)
+    let debriefIndex = 0; // CHANGE THIS TO 0 (DEBRIEFINDEX)
 
     const increment = async () => {
         movieIndex++;
