@@ -35,7 +35,7 @@
 
         let emailAddress = "mailto:" + email;
         let currID = params.assignmentId;
-        let postURL = params.turkSubmitTo + '/mturk/externalSubmit';
+        let postURL = 'https://www.prolific.com/'
         let moviesRemaining = [];
 
         let currVid;
