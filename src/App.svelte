@@ -33,6 +33,9 @@
     import Header from "./components/Header.svelte";
     import MTurkPreview from "./pages/MTurkPreview.svelte";
     import Debrief2 from "./pages/Debrief2.svelte";
+    import Debrief3 from "./pages/Debrief3.svelte";
+
+
 
     // path details
     const ratingsPath = `${experiment}/ratings`;
@@ -59,6 +62,21 @@
 
     // use to validate build type in JS console
     console.log(dev);
+
+    function shuffle(array) {
+            let currentIndex = array.length, randomIndex;
+            // While there remain elements to shuffle.
+            while (currentIndex != 0) {
+                // Pick a remaining element.
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex--;
+                // And swap it with the current element.
+                [array[currentIndex], array[randomIndex]] = [
+                    array[randomIndex], array[currentIndex]];
+            }
+            return array;
+        }
+    
 
     const resetTestWorker = async () => {
         // Change to the new state within Svelte
@@ -106,6 +124,8 @@
         }
         moviesRemaining.sort();
         movieLinks.sort();
+        shuffle(moviesRemaining);
+        shuffle(movieLinks);
 
         // check to see which movies subject has already viewed (if any)
         let currPath = `${ratingsPath}/${params.workerId}`;
@@ -311,7 +331,7 @@
     };
      // CHANGE THIS TO 0 (VIDEOINDEX)
     let debriefIndex = 0; // CHANGE THIS TO 0 (DEBRIEFINDEX)
-
+    let debriefIndex2 = 0;
     const increment = async () => {
         movieIndex++;
         numOptions--;
@@ -321,6 +341,11 @@
     const increment2 = async () => {
         debriefIndex++;
         console.log(debriefIndex);
+    }
+
+    const increment3 = async () => {
+        debriefIndex2++;
+        console.log(debriefIndex2);
     }
     // function used to remove previously watched videos from array
     function removeItemOnce(arr, value) {
@@ -399,8 +424,24 @@
             options={numOptions}
             ratingType={currRating}
             on:finished={() => increment2()}
-            on:botcheck={() => updateState("botcheck-task")}
             on:complete={() => updateState("debrief")}
+            on:finished={() => updateState("debrief3")}
+
+        />
+
+        {:else if currentState === "debrief3"}
+        <Debrief3
+            {email}
+            {labName}
+            {numOptions}
+            movies={moviesRemaining}
+            links={movieLinks}
+            index={debriefIndex2}
+            videoIndex = {movieIndex}
+            options={numOptions}
+            ratingType={currRating}
+            on:finished={() => increment3()}
+            on:botcheck={() => updateState("botcheck-task")}
             on:finished={() => updateState("task")}
 
         />

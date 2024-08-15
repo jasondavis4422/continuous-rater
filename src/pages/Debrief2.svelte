@@ -10,6 +10,8 @@
         let value2 = [0];
         let value3 = [0];
         let value4 = [0];
+        let value5 = [0];
+        let value6 = [0];
 
         const ratingsPath = `${experiment}/ratings`;
 	    const ratingsDoc = db.doc(ratingsPath);
@@ -24,7 +26,7 @@
         
         export let email;
         export let labName;
-        export let numOptions;
+    
         export let videoIndex;
         
         export let ratingType;
@@ -42,7 +44,7 @@
         let currVid;
 	    let currVidSrc;
 	    let ratingDocPathway;
-        let botCheck = 3;
+        let botCheck = 2;
 
         if (options > 0) {
 		// choose random movie and rating type
@@ -56,7 +58,7 @@
 		currVidSrc = links[index];
 	
 	}
-     
+    
         function shuffle(array) {
             let currentIndex = array.length, randomIndex;
             // While there remain elements to shuffle.
@@ -70,20 +72,24 @@
             }
             return array;
         }
+
         // Used like so
-        var arr = ["happy", "sad", "fearful", "disgusted", "angry"];
+        var arr = ["joyful", "warm and tender", "inspired or uplifted", "sad", "disgusted", "ashamed", "horrified"];
         shuffle(arr);
         let Q1 = "After watching the video, how " + arr[0] + " do you feel on a scale from 1-100?";
         let Q2 = "After watching the video, how " + arr[1] + " do you feel on a scale from 1-100?";
         let Q3 = "After watching the video, how " + arr[2] + " do you feel on a scale from 1-100?";
         let Q4 = "After watching the video, how " + arr[3] + " do you feel on a scale from 1-100?";
         let Q5 = "After watching the video, how " + arr[4] + " do you feel on a scale from 1-100?";
+        let Q6 = "After watching the video, how " + arr[5] + " do you feel on a scale from 1-100?";
+        let Q7 = "After watching the video, how " + arr[6] + " do you feel on a scale from 1-100?";
+
   
         const submitHIT = async () => {
             
             try {
-                let rating_info = [value, value1, value2, value3, value4];
-                let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4]];
+                let rating_info = [value, value1, value2, value3, value4, value5, value6];
+                let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6]];
                 await db.doc(pathway).update({
                     Ratings: rating_info,
                     Dimensions: dimensions,
@@ -96,19 +102,11 @@
         };
      
         const newPage = async () =>{
-            if (videoIndex % botCheck == 0 && videoIndex != numVideos){
-                let rating_info = [value, value1, value2, value3, value4];
-                let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4]];
-                dispatch("botcheck")
-                await db.doc(ratingDocPathway).update({
-                    Ratings: rating_info,
-                    Dimensions: dimensions,
-                });    
-            }  
+          
             
-           else if (videoIndex != numVideos){
-                let rating_info = [value, value1, value2, value3, value4];
-                let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4]];
+           if (videoIndex != numVideos){
+            let rating_info = [value, value1, value2, value3, value4, value5, value6];
+            let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6]];
                 dispatch("finished")
                 await db.doc(ratingDocPathway).update({
                     Ratings: rating_info,
@@ -117,8 +115,8 @@
             } 
             else
             {
-                let rating_info = [value, value1, value2, value3, value4];
-                let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4]];
+                let rating_info = [value, value1, value2, value3, value4, value5, value6];
+                let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6]];
                 dispatch("complete")
                 await db.doc(ratingDocPathway).update({
                     Ratings: rating_info,
@@ -204,11 +202,23 @@
                                         <input type="range" min = "1" max = "100" bind:value={value4}>
                                         <p> Rating: {value4} <span id="demo2"> </span> </p>
                                     </label>
+
+                                    <label class="label"><h3>{Q6}</h3>
+                                        <div class="rangeslider">
+                                        <label class="radio2">
+                                            <input type="range" min = "1" max = "100" bind:value={value5}>
+                                            <p> Rating: {value5} <span id="demo2"> </span> </p>
+                                        </label>
+
+                                        <label class="label"><h3>{Q7}</h3>
+                                            <div class="rangeslider">
+                                            <label class="radio2">
+                                                <input type="range" min = "1" max = "100" bind:value={value6}>
+                                                <p> Rating: {value6} <span id="demo2"> </span> </p>
+                                            </label>
                 <p>
                     If you have any questions or concerns, you can email <a href={emailAddress}>{labName}.</a> 
-                   <br>
-                    If you would like to <strong>repeat this HIT with a new video</strong>, 
-                    please simply click the next button. There are {numOptions} videos left to watch. Thanks! <br>
+               
                 </p>
                         
                 <div class="field-label">
