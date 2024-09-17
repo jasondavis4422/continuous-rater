@@ -34,6 +34,7 @@
     import MTurkPreview from "./pages/MTurkPreview.svelte";
     import Debrief2 from "./pages/Debrief2.svelte";
     import Debrief3 from "./pages/Debrief3.svelte";
+    import Prolific from "./pages/Prolific.svelte"
 
 
 
@@ -372,16 +373,20 @@
             on:finished={() => agreedConsent()}
             on:returned={() => failedConsent()}
         />
-    {:else if currentState === "botcheck-instruct"}
+        {:else if currentState === "botcheck-instruct"}
         <Botcheck
-            on:finished={() => updateState("instructions1")}
+            on:finished={() => updateState("prolific")}
             on:failed={() => failedBot()}
-        />
+        ></Botcheck>
     {:else if currentState === "botcheck-task"}
         <Botcheck
-            on:finished={() => updateState("task")}
+            on:finished={() => updateState("prolific")}
             on:failed={() => failedBot()}
-        />
+        ></Botcheck>
+        {:else if currentState === "prolific"}
+        <Prolific subPath={subjectPath} {email} {labName} {numOptions}
+        on:finished={() => updateState("instructions1")}></Prolific>
+
     {:else if currentState === "instructions1"}
         <Instructions1
             ratingType={currRating}
