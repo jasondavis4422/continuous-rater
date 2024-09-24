@@ -25,7 +25,7 @@
 
         <p>You will use this to go back to Prolific and complete the confirmation. If you do not do this, you will not recieve compensation.</p>
             <p>.</p>
-        You have watched all possible movies. <strong>You may exit this HIT.</strong>
+        You have watched all possible movies. <strong>You may exit this study.</strong>
     </div>
     
     

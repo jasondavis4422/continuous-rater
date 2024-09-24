@@ -9,7 +9,7 @@
   const ratingInstruct =
     "In this task, you will watch a short video, provide ratings related to that video continuously as you watch, and answer a series of follow-up questions. <br><br> Specifically, you will rate how <strong>" +
     ratingType +
-    "</strong> a video makes you feel by using your keyboard to control a rating box (which is demoed on the next page) throughout the video. <br><br> You may redo this HIT up to 1 more time (you are provided with a different video each time). ";
+    "</strong> a video makes you feel by using your keyboard to control a rating box (which is demoed on the next page) throughout the video.";
 
   const instructions = [ratingInstruct];
 
