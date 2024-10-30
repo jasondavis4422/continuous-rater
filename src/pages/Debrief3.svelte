@@ -50,7 +50,47 @@
 		// grab URL for video sourcing
 		currVidSrc = links[index];
 	
-	}
+        }
+        let Main_question = ['1.Which animal was NOT rescued in the clip?', 
+        '1.    	Which statement is NOT true about the animals mentioned in the clip?', 
+        '1.    	Which of the following is NOT described in the clip?',
+         '1.    	What is NOT described in the clip?',
+         ' 1.    	Which of the following is NOT a behavior shown by the cow in the previous clip?',
+           '1.    	What is NOT true about Esther, the pig, described in the clip?”', 
+           '1.    	Which of the following animals was NOT described as enjoying hugs and petting from humans?',
+           ' 1.    	Which of the following animals was NOT described as showing affection to humans?', 
+           '1.    	Which animal did NOT appear in the previous clip?'];
+
+          let Answer_a = ['A) Lamb',
+           'A) The mother pig and her piglets were rescued from a slaughterhouse.',
+           'A) Goats enjoying a slide.',' ​​A) Elephants playing with a tire.',
+'A) Pumping water from a well',
+' A) Esther was supposed to be a mini pig but grew to around 650 pounds.',
+ ' ​A) Pig', 
+  'A) Chicken',
+   'A) Monkey'];
+
+   let Answer_b = ['B) Cat',
+    'B) Most pigs are raised in factory farms and live on concrete or metal floors.'
+    , 'B) A bear scratching its back on a tree.'
+    , 'B) Pigs playing with a ball.'
+    , 'B) Caring for a sick cow',
+     'B) Esther’s owners never wanted to give her up, even after realizing how large she would grow.', 
+     '​​B) Cow'
+     , 'B) Lion',
+      'B) Donkey']
+let Answer_c = ['C) Pigeon', 
+'C) The rescued hens had been kept in large, spacious cages before their rescue.',
+ 'C) Cows running around in a pasture.'
+ , 'C) Cows playing with a ball.'
+ , '​​C) Opening a door with its mouth'
+ , 'C) Esther has a diet managed with high-fiber, low-fat kibble.'
+ , 'C) Sheep'
+ , 'C) Sheep', 'C) Goat'];
+let Answer_d = ['D) Whale'
+, 'D) Calves rescued from dairy farms were given a chance to explore outside together.'
+,'D) Chickens playing around', 'D) Goats riding in a cart.', 'D) Caring for its calf', 'D) Esther’s fans painted photos of her, which her owners received.', '​D) Chicken', 'D) Turkey', 'D) Duck'];
+let Answer_e =['E) Koala', 'E) Beagles from a laboratory were seeing the outside world for the first time after their rescue.', 'E) Piglets playing in the mud', 'E) Sheep playing with a ball.', 'E) Spinning according to human’s command', 'E) Esther’s fans painted photos of her, which her owners received.', 'E) Horse', 'E) Cow', 'E) Elephant'];
     console.log(ratingDocPathway)
      
      
@@ -107,27 +147,26 @@
 
 
                                         <label class="label"
-            ><u>What animals were featured in the video clip you just saw?</u>
+            ><u>       {Main_question[videoIndex]}  </u>
             <div class="options">
                 <label class="radio">
-                    <input type="radio" bind:group={answer} value={"cows"} />
-                    Cows
+                    <input type="radio" bind:group={answer} value={"A"} />
+                    {Answer_a[videoIndex]}  
                 </label>
                 <label class="radio">
-                    <input type="radio" bind:group={answer} value={"pigs"} />
-                    Pigs
+                    <input type="radio" bind:group={answer} value={"B"} />
+                    {Answer_b[videoIndex]}                </label>
+                <label class="radio">
+                    <input type="radio" bind:group={answer} value={"C"} />
+                    {Answer_c[videoIndex]}  
                 </label>
                 <label class="radio">
-                    <input type="radio" bind:group={answer} value={"chicken"} />
-                    Chicken
+                    <input type="radio" bind:group={answer} value={"D"} />
+                    {Answer_d[videoIndex]}  
                 </label>
                 <label class="radio">
-                    <input type="radio" bind:group={answer} value={"sheep"} />
-                    Sheep
-                </label>
-                <label class="radio">
-                    <input type="radio" bind:group={answer} value={"cats"} />
-                    Cats
+                    <input type="radio" bind:group={answer} value={"E"} />
+                    {Answer_e[videoIndex]}  
                 </label>
                 <br />
             </div>
