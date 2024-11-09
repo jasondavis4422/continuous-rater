@@ -76,15 +76,15 @@
         // Used like so
         var arr = ["joyful", "warm and tender", "inspired or uplifted", "sad", "disgusted", "ashamed", "horrified"];
         shuffle(arr);
-        let Q1 = "After watching the video, how " + arr[0] + " do you feel on a scale from 1-100?";
-        let Q2 = "After watching the video, how " + arr[1] + " do you feel on a scale from 1-100?";
-        let Q3 = "After watching the video, how " + arr[2] + " do you feel on a scale from 1-100?";
-        let Q4 = "After watching the video, how " + arr[3] + " do you feel on a scale from 1-100?";
-        let Q5 = "After watching the video, how " + arr[4] + " do you feel on a scale from 1-100?";
-        let Q6 = "After watching the video, how " + arr[5] + " do you feel on a scale from 1-100?";
-        let Q7 = "After watching the video, how " + arr[6] + " do you feel on a scale from 1-100?";
+        let Q1 = "How " + arr[0] + " did the previous video make you feel?";
+        let Q2 = "How " + arr[1] + " did the previous video make you feel?";
+        let Q3 = "How " + arr[2] + " did the previous video make you feel?";
+        let Q4 = "How " + arr[3] + " did the previous video make you feel?";
+        let Q5 = "How " + arr[4] + " did the previous video make you feel?";
+        let Q6 = "How " + arr[5] + " did the previous video make you feel?";
+        let Q7 = "How " + arr[6] + " did the previous video make you feel?";
 
-  
+ 
         const submitHIT = async () => {
             
             try {
@@ -151,7 +151,7 @@
 
         .rangeslider {
           overflow: hidden;
-           width: 200%;
+           width: 400%;
            height: 200%;
 }
         .button {
@@ -162,8 +162,8 @@
     <div class="container">
         <div class="form-box">
             <form name="mturk" action={postURL} method='POST'>
-                <h2> After watching the video, we have a set of questions for you to answer.</h2>
-                <em> Please answer all questions and press submit once you've finished for another video. </em>
+                <h2> We have a few questions about the previous video. Please rate your feelings on a scale from 1 (Barely at all) to 100 (Strongest imaginable).</h2>
+                <em> Please answer all questions, then press “NEXT PAGE” to move on to the next question. </em>
 
                 <input type="hidden" name="assignmentId" id="assignmentId" value={currID}>
                 <input type="hidden" name="hidden_val_DONT_REMOVE" value="1">
@@ -172,49 +172,49 @@
                     <div class="rangeslider">
                     <label class="radio2">
                         <input type="range" min = "1" max = "100" bind:value={value}>
-                        <p> Rating: {value} <span id="demo2"> </span> </p>
+                        <p> {arr[0]}: {value} <span id="demo2"> </span> </p>
                     </label>
 
                     <label class="label"><h3>{Q2}</h3>
                         <div class="rangeslider">
                         <label class="radio2">
                             <input type="range" min = "1" max = "100" bind:value={value1}>
-                            <p> Rating: {value1} <span id="demo2"> </span> </p>
+                            <p> {arr[1]}: {value1} <span id="demo2"> </span> </p>
                         </label>
 
                         <label class="label"><h3>{Q3}</h3>
                             <div class="rangeslider">
                             <label class="radio2">
                                 <input type="range" min = "1" max = "100" bind:value={value2}>
-                                <p> Rating: {value2} <span id="demo2"> </span> </p>
+                                <p> {arr[2]}: {value2} <span id="demo2"> </span> </p>
                             </label>
 
                             <label class="label"><h3>{Q4}</h3>
                                 <div class="rangeslider">
                                 <label class="radio2">
                                     <input type="range" min = "1" max = "100" bind:value={value3}>
-                                    <p> Rating: {value3} <span id="demo2"> </span> </p>
+                                    <p> {arr[3]}: {value3} <span id="demo2"> </span> </p>
                                 </label>
 
                                 <label class="label"><h3>{Q5}</h3>
                                     <div class="rangeslider">
                                     <label class="radio2">
                                         <input type="range" min = "1" max = "100" bind:value={value4}>
-                                        <p> Rating: {value4} <span id="demo2"> </span> </p>
+                                        <p> {arr[4]}: {value4} <span id="demo2"> </span> </p>
                                     </label>
 
                                     <label class="label"><h3>{Q6}</h3>
                                         <div class="rangeslider">
                                         <label class="radio2">
                                             <input type="range" min = "1" max = "100" bind:value={value5}>
-                                            <p> Rating: {value5} <span id="demo2"> </span> </p>
+                                            <p> {arr[5]}: {value5} <span id="demo2"> </span> </p>
                                         </label>
 
                                         <label class="label"><h3>{Q7}</h3>
                                             <div class="rangeslider">
                                             <label class="radio2">
                                                 <input type="range" min = "1" max = "100" bind:value={value6}>
-                                                <p> Rating: {value6} <span id="demo2"> </span> </p>
+                                                <p> {arr[6]}: {value6} <span id="demo2"> </span> </p>
                                             </label>
                 <p>
                     If you have any questions or concerns, you can email <a href={emailAddress}>{labName}.</a> 

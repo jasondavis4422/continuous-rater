@@ -114,9 +114,10 @@
     };
 
     // sets movieIndex to 0 and ratingIndex to random, pushes & sorts all movies
-    let CDN = "https://d1h4dm5ishe8rs.cloudfront.net/";
+    let CDN = "https://d1e3c04h84hf6s.cloudfront.net/";
     let fileType = ".mp4";
     let movieIndex = 0;
+    let movieIndices = []
     let ratingIndex = Math.floor(Math.random() * ratingTypes.length);
     stimuliDoc.get().then(function (stimuliTable) {
         for (var field in stimuliTable.data()) {
@@ -128,6 +129,19 @@
         shuffle(moviesRemaining);
         shuffle(movieLinks);
 
+        console.log("move links")
+        console.log(movieLinks)
+        
+        for (var field2 in movieLinks){
+            let str = movieLinks[field2]
+            str = str.replace(CDN, "");
+            str = str.replace(fileType, "")
+             var res = str.replace(/\D/g, "");
+             res = parseInt(res)
+             movieIndices.push(res)
+        }
+        console.log("movie indeces")
+        console.log(movieIndices)
         // check to see which movies subject has already viewed (if any)
         let currPath = `${ratingsPath}/${params.workerId}`;
         db.collection(currPath)
@@ -443,6 +457,7 @@
             links={movieLinks}
             index={debriefIndex2}
             videoIndex = {movieIndex}
+            movieIndices = {movieIndices}
             options={numOptions}
             ratingType={currRating}
             on:finished={() => increment3()}

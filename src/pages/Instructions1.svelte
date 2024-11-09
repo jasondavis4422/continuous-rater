@@ -7,10 +7,12 @@
 
   // Add/remove items here to create more instructions pages
   const ratingInstruct =
-    "In this task, you will watch a short video, provide ratings related to that video continuously as you watch, and answer a series of follow-up questions. <br><br> Specifically, you will rate how <strong>" +
-    ratingType +
-    "</strong> a video makes you feel by using your keyboard to control a rating box (which is demoed on the next page) throughout the video.";
-
+  "In this task, you will watch nine short videos, each lasting about 2-3 minutes. While watching, you will provide continuous ratings related to the video and, after each clip ends, answer a series of follow-up questions. \
+\
+While the video plays, you will rate how sad a video makes you feel by using the Up and Down keys on your keyboard. \
+\
+The rating box will remain in its last position until you adjust it again, so please update it whenever you feel a change in your emotions throughout the video. The rating box will be demonstrated on the next page.\
+"
   const instructions = [ratingInstruct];
 
   const dispatch = createEventDispatcher();

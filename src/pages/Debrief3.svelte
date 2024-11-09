@@ -26,6 +26,7 @@
 	    export let options;
 	    export let links;
 	    export let index; 
+        export let movieIndices;
 
         let emailAddress = "mailto:" + email;
         let currID = params.assignmentId;
@@ -92,7 +93,7 @@ let Answer_d = ['D) Whale'
 ,'D) Chickens playing around', 'D) Goats riding in a cart.', 'D) Caring for its calf', 'D) Esther’s fans painted photos of her, which her owners received.', '​D) Chicken', 'D) Turkey', 'D) Duck'];
 let Answer_e =['E) Koala', 'E) Beagles from a laboratory were seeing the outside world for the first time after their rescue.', 'E) Piglets playing in the mud', 'E) Sheep playing with a ball.', 'E) Spinning according to human’s command', 'E) Esther’s fans painted photos of her, which her owners received.', 'E) Horse', 'E) Cow', 'E) Elephant'];
     console.log(ratingDocPathway)
-     
+     console.log(movieIndices)
      
         const newPage = async () =>{   
             if (videoIndex % botCheck == 0 && videoIndex != numVideos){
@@ -139,34 +140,34 @@ let Answer_e =['E) Koala', 'E) Beagles from a laboratory were seeing the outside
     <div class="container">
         <div class="form-box">
             <form name="mturk" action={postURL} method='POST'>
-                <h2> After watching the video, we have a set of questions for you to answer.</h2>
-                <em> Please answer all questions and press submit once you've finished for another video. </em>
+                <h2> Please answer the following question, then press “NEXT PAGE” to continue to the next video.  </h2>
+           
 
                 <input type="hidden" name="assignmentId" id="assignmentId" value={currID}>
                 <input type="hidden" name="hidden_val_DONT_REMOVE" value="1">
 
 
                                         <label class="label"
-            ><u>       {Main_question[videoIndex]}  </u>
+            ><u>       {Main_question[movieIndices[videoIndex]]}  </u>
             <div class="options">
                 <label class="radio">
                     <input type="radio" bind:group={answer} value={"A"} />
-                    {Answer_a[videoIndex]}  
+                    {Answer_a[movieIndices[videoIndex]]}
                 </label>
                 <label class="radio">
                     <input type="radio" bind:group={answer} value={"B"} />
-                    {Answer_b[videoIndex]}                </label>
+                    {Answer_b[movieIndices[videoIndex]]}                </label>
                 <label class="radio">
                     <input type="radio" bind:group={answer} value={"C"} />
-                    {Answer_c[videoIndex]}  
+                    {Answer_c[movieIndices[videoIndex]]}  
                 </label>
                 <label class="radio">
                     <input type="radio" bind:group={answer} value={"D"} />
-                    {Answer_d[videoIndex]}  
+                    {Answer_d[movieIndices[videoIndex]]}  
                 </label>
                 <label class="radio">
                     <input type="radio" bind:group={answer} value={"E"} />
-                    {Answer_e[videoIndex]}  
+                    {Answer_e[movieIndices[videoIndex]]}  
                 </label>
                 <br />
             </div>
