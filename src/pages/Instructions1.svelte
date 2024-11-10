@@ -41,7 +41,22 @@ The rating box will remain in its last position until you adjust it again, so pl
   <h1>Instructions</h1>
   <div class="text-box">
     <div class="content">
-      {@html instructions[currentPage]}
+      <p>
+       
+In this task, you will watch nine short videos, each lasting about 2-3 minutes. While watching, you will provide continuous ratings related to the video and, after each clip ends, answer a series of follow-up questions. 
+
+    </p>
+
+    <p>
+      While the video plays, you will rate how sad a video makes you feel by using the Up and Down keys on your keyboard. 
+    </p>
+
+    <p>
+
+      The rating box will remain in its last position until you adjust it again, so please update it whenever you feel a change in your emotions throughout the video. The rating box will be demonstrated on the next page.
+      
+      
+    </p>
     </div>
   </div>
   <br />

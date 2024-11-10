@@ -57,7 +57,7 @@
         '1.    	Which of the following is NOT described in the clip?',
          '1.    	What is NOT described in the clip?',
          ' 1.    	Which of the following is NOT a behavior shown by the cow in the previous clip?',
-           '1.    	What is NOT true about Esther, the pig, described in the clip?”', 
+           '1.    	What is NOT true about Esther, the pig, described in the clip?', 
            '1.    	Which of the following animals was NOT described as enjoying hugs and petting from humans?',
            ' 1.    	Which of the following animals was NOT described as showing affection to humans?', 
            '1.    	Which animal did NOT appear in the previous clip?'];
@@ -76,7 +76,7 @@
     , 'B) A bear scratching its back on a tree.'
     , 'B) Pigs playing with a ball.'
     , 'B) Caring for a sick cow',
-     'B) Esther’s owners never wanted to give her up, even after realizing how large she would grow.', 
+     'B) The owners of Esther never wanted to give her up, even after realizing how large she would grow.', 
      '​​B) Cow'
      , 'B) Lion',
       'B) Donkey']
@@ -90,8 +90,8 @@ let Answer_c = ['C) Pigeon',
  , 'C) Sheep', 'C) Goat'];
 let Answer_d = ['D) Whale'
 , 'D) Calves rescued from dairy farms were given a chance to explore outside together.'
-,'D) Chickens playing around', 'D) Goats riding in a cart.', 'D) Caring for its calf', 'D) Esther’s fans painted photos of her, which her owners received.', '​D) Chicken', 'D) Turkey', 'D) Duck'];
-let Answer_e =['E) Koala', 'E) Beagles from a laboratory were seeing the outside world for the first time after their rescue.', 'E) Piglets playing in the mud', 'E) Sheep playing with a ball.', 'E) Spinning according to human’s command', 'E) Esther’s fans painted photos of her, which her owners received.', 'E) Horse', 'E) Cow', 'E) Elephant'];
+,'D) Chickens playing around', 'D) Goats riding in a cart.', 'D) Caring for its calf', 'D) The fans of Esther painted photos of her, which her owners received.', '​D) Chicken', 'D) Turkey', 'D) Duck'];
+let Answer_e =['E) Koala', 'E) Beagles from a laboratory were seeing the outside world for the first time after their rescue.', 'E) Piglets playing in the mud', 'E) Sheep playing with a ball.', 'E) Spinning according to human’s command', 'E) The fans of Esther painted photos of her, which her owners received.', 'E) Horse', 'E) Cow', 'E) Elephant'];
     console.log(ratingDocPathway)
      console.log(movieIndices)
      
@@ -148,26 +148,26 @@ let Answer_e =['E) Koala', 'E) Beagles from a laboratory were seeing the outside
 
 
                                         <label class="label"
-            ><u>       {Main_question[movieIndices[videoIndex]]}  </u>
+            ><u>       {Main_question[videoIndex -1]}  </u>
             <div class="options">
                 <label class="radio">
                     <input type="radio" bind:group={answer} value={"A"} />
-                    {Answer_a[movieIndices[videoIndex]]}
+                    {Answer_a[videoIndex-1]}
                 </label>
                 <label class="radio">
                     <input type="radio" bind:group={answer} value={"B"} />
-                    {Answer_b[movieIndices[videoIndex]]}                </label>
+                    {Answer_b[videoIndex-1]}                </label>
                 <label class="radio">
                     <input type="radio" bind:group={answer} value={"C"} />
-                    {Answer_c[movieIndices[videoIndex]]}  
+                    {Answer_c[videoIndex-1]}  
                 </label>
                 <label class="radio">
                     <input type="radio" bind:group={answer} value={"D"} />
-                    {Answer_d[movieIndices[videoIndex]]}  
+                    {Answer_d[videoIndex-1]}  
                 </label>
                 <label class="radio">
                     <input type="radio" bind:group={answer} value={"E"} />
-                    {Answer_e[movieIndices[videoIndex]]}  
+                    {Answer_e[videoIndex-1]}  
                 </label>
                 <br />
             </div>

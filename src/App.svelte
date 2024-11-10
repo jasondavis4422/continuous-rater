@@ -126,8 +126,8 @@
         }
         moviesRemaining.sort();
         movieLinks.sort();
-        shuffle(moviesRemaining);
-        shuffle(movieLinks);
+       // shuffle(moviesRemaining);
+       // shuffle(movieLinks);
 
         console.log("move links")
         console.log(movieLinks)

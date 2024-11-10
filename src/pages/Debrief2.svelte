@@ -151,7 +151,7 @@
 
         .rangeslider {
           overflow: hidden;
-           width: 400%;
+           width: 450%;
            height: 200%;
 }
         .button {
@@ -216,10 +216,7 @@
                                                 <input type="range" min = "1" max = "100" bind:value={value6}>
                                                 <p> {arr[6]}: {value6} <span id="demo2"> </span> </p>
                                             </label>
-                <p>
-                    If you have any questions or concerns, you can email <a href={emailAddress}>{labName}.</a> 
                
-                </p>
                         
                 <div class="field-label">
                     <!-- Left empty for spacing -->
