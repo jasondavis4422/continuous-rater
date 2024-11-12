@@ -102,7 +102,7 @@
 />
 
 <article class="rating-box">
-    <div class="first-anchor">Most {ratingType}</div>
+    <div class="first-anchor">Strongest imaginable {ratingType}</div>
     <svg viewBox="0 0 {width} {height}">
         <line
             class="reference"
@@ -124,7 +124,7 @@
         {/each}
         <circle cx="0" cy={(numbers[0] / 100) * height} r="5" />
     </svg>
-    <div class="last-anchor">Least {ratingType}</div>
+    <div class="last-anchor">Barely at all {ratingType}</div>
 </article>
 
 <style>
