@@ -3,7 +3,7 @@
 <script>
     import { db } from "./utils.js";
 
-    export let ratingType;
+   
     export let rating; // median value for ratings
     export let pathway;
     export let time; // used to create dict with timestamp and rating
@@ -102,7 +102,7 @@
 />
 
 <article class="rating-box">
-    <div class="first-anchor">Strongest imaginable {ratingType}</div>
+    <div class="first-anchor">Strongest imaginable</div>
     <svg viewBox="0 0 {width} {height}">
         <line
             class="reference"
@@ -124,7 +124,7 @@
         {/each}
         <circle cx="0" cy={(numbers[0] / 100) * height} r="5" />
     </svg>
-    <div class="last-anchor">Barely at all {ratingType}</div>
+    <div class="last-anchor">Barely at all</div>
 </article>
 
 <style>

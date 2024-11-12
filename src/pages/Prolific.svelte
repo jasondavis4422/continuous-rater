@@ -14,6 +14,7 @@
 	    const stimuliDoc = db.doc(stimuliPath);
 
         const dispatch = createEventDispatcher();
+        let currentState = "prolific"
         
         // populating necessary variables
         
@@ -58,16 +59,22 @@
     console.log(ratingDocPathway)
 
 
-     
+    function handleClick() {
+		currentState = "prolific";
+	}
         const newPage = async () =>{   
-           
+          if (prolific_id != null) {
                 dispatch("finished")
                 await db.doc(subPath).update({
                    Prolific_ID: prolific_id,
                    Session_Num: answer
-
                 });    
-
+            }
+            else
+            {
+                alert('ID was not submitted.')
+                currentState = "try again";
+            }
         }
       
     </script>
@@ -96,9 +103,10 @@
     
     <div class="container">
         <div class="form-box">
+            {#if currentState === "prolific"}
             <form name="mturk" action={postURL} method='POST'>
-                <h2> After watching the video, we have a set of questions for you to answer.</h2>
-                <em> Please answer all questions and press submit once you've finished for another video. </em>
+                <h2> Please provide your Prolific ID and indicate whether this is your first or second participation in this experiment. This information should be accurate for compensation. </h2>
+
 
                 <input type="hidden" name="assignmentId" id="assignmentId" value={currID}>
                 <input type="hidden" name="hidden_val_DONT_REMOVE" value="1">
@@ -138,5 +146,10 @@
                 <br>
                 <button class="button is-success is-large" on:click={newPage}>NEXT PAGE</button>         
             </form>
+            {:else if currentState === "try again"}
+            <p>Sorry, you did not submit your ID. Please try again.</p>
+            <button class="button" on:click={handleClick}>Try again</button>
+            {/if}
         </div> 
+        
     </div>
