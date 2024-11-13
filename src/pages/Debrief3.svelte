@@ -19,6 +19,8 @@
         
         export let email;
         export let videoIndex;
+
+            let currentState = "debrief3"
   
         
         export let ratingType;
@@ -38,7 +40,7 @@
 	    let currVidSrc;
 	    let ratingDocPathway;
         let botCheck = 2;
-       let answer = '';
+       let answer;
 
         if (options > 0) {
 		// choose random movie and rating type
@@ -95,20 +97,34 @@ let Answer_e =['E) Koala', 'E) Beagles from a laboratory were seeing the outside
     console.log(ratingDocPathway)
      console.log(movieIndices)
      
-        const newPage = async () =>{   
+
+    function handleClick() {
+		currentState = "debrief3";
+	}
+        const newPage = async () =>{  
+            if (answer != null)
+            {
             if (videoIndex % botCheck == 0 && videoIndex != numVideos){
             
                 dispatch("botcheck")
                 await db.doc(ratingDocPathway).update({
                 Comphrehension: answer
                 });    
-            }   else
+            }   
+            else
 
                 dispatch("finished")
                 await db.doc(ratingDocPathway).update({
                    Comphrehension: answer
                 
                 });    
+            }
+
+            else
+            {
+                alert('Answer was not submitted.')
+                currentState = "try again";
+            }
         
         }
       
@@ -139,7 +155,8 @@ let Answer_e =['E) Koala', 'E) Beagles from a laboratory were seeing the outside
     
     <div class="container">
         <div class="form-box">
-            <form name="mturk" action={postURL} method='POST'>
+            {#if currentState === "debrief3"}
+            <form name="mturk"  method='POST'>
                 <h2> Please answer the following question, then press “NEXT PAGE” to continue to the next video.  </h2>
            
 
@@ -182,5 +199,9 @@ let Answer_e =['E) Koala', 'E) Beagles from a laboratory were seeing the outside
                 <br>
                 <button class="button is-success is-large" on:click={newPage}>NEXT PAGE</button>         
             </form>
+            {:else if currentState === "try again"}
+            <p>Sorry, you did not submit your answer. Please try again.</p>
+            <button class="button" on:click={handleClick}>Try again</button>
+            {/if}
         </div> 
     </div>
