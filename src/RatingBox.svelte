@@ -9,7 +9,7 @@
     export let time; // used to create dict with timestamp and rating
     export let paused;
     export let ratingBoxUse = "actual";
-
+    // random change
     let width = "800";
     let height = "200";
     let n = width; // number of points displayed in graphic
