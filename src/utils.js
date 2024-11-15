@@ -38,6 +38,7 @@ export const totalHITTime = estHITTime * 2; // total time provided for HIT (in m
 // stimuli variables      
 export const ratingTypes = ['happy', 'sad', 'amused']; // array of rating types   
 let main = 1000000000;
+// export const ratingTypes = ['pleasant', 'unpleasant', 'calm', 'aroused', 'funny', 'happy', 'angry', 'sad', 'disgusted', 'afraid', 'suprised']; // array of rating types   
 
 // this configures path to proper firebase
 // COPY AND PASTE YOUR FIREBASE CONFIG HERE
