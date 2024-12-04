@@ -12,6 +12,10 @@
         let value4 = [0];
         let value5 = [0];
         let value6 = [0];
+        let value7 = [0];
+        let value8 = [0];
+        let value9 = [0];
+        let value10 = [0];
 
         const ratingsPath = `${experiment}/ratings`;
 	    const ratingsDoc = db.doc(ratingsPath);
@@ -74,7 +78,7 @@
         }
 
         // Used like so
-        var arr = ["joyful", "warm and tender", "inspired or uplifted", "sad", "disgusted", "ashamed", "horrified"];
+        var arr = ["joyful", "warm and tender", "inspired or uplifted", "sad", "disgusted", "ashamed", "horrified", "self-relevant", "surprised", "angry", "happy"];
         shuffle(arr);
         let Q1 = "How " + arr[0] + " did the previous video make you feel?";
         let Q2 = "How " + arr[1] + " did the previous video make you feel?";
@@ -83,13 +87,16 @@
         let Q5 = "How " + arr[4] + " did the previous video make you feel?";
         let Q6 = "How " + arr[5] + " did the previous video make you feel?";
         let Q7 = "How " + arr[6] + " did the previous video make you feel?";
+        let Q8 = "How " + arr[7] + " did the previous video make you feel?"; 
+        let Q9 = "How " + arr[8] + " did the previous video make you feel?";
+        let Q10 = "How " + arr[9] + " did the previous video make you feel?"; 
+        let Q11 = "How " + arr[10] + " did the previous video make you feel?";
 
- 
-        const submitHIT = async () => {
+         const submitHIT = async () => {
             
             try {
-                let rating_info = [value, value1, value2, value3, value4, value5, value6];
-                let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6]];
+                let rating_info = [value, value1, value2, value3, value4, value5, value6, value7, value8. value9, value10];
+                let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6], arr[7], arr[8], arr[9], arr[10]];
                 await db.doc(pathway).update({
                     Ratings: rating_info,
                     Dimensions: dimensions,
@@ -105,8 +112,8 @@
           
             
            if (videoIndex != numVideos){
-            let rating_info = [value, value1, value2, value3, value4, value5, value6];
-            let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6]];
+            let rating_info = [value, value1, value2, value3, value4, value5, value6, value7, value8. value9, value10];
+            let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6], arr[7], arr[8], arr[9], arr[10]];
                 dispatch("finished")
                 await db.doc(ratingDocPathway).update({
                     Ratings: rating_info,
@@ -115,8 +122,8 @@
             } 
             else
             {
-                let rating_info = [value, value1, value2, value3, value4, value5, value6];
-                let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6]];
+               let rating_info = [value, value1, value2, value3, value4, value5, value6, value7, value8. value9, value10];
+               let dimensions = [arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6], arr[7], arr[8], arr[9], arr[10]];
                 dispatch("complete")
                 await db.doc(ratingDocPathway).update({
                     Ratings: rating_info,
@@ -216,7 +223,34 @@
                                                 <input type="range" min = "1" max = "100" bind:value={value6}>
                                                 <p> {arr[6]}: {value6} <span id="demo2"> </span> </p>
                                             </label>
-               
+
+                                            <label class="label"><h3>{Q8}</h3>
+                                                <div class="rangeslider">
+                                                <label class="radio2">
+                                                    <input type="range" min = "1" max = "100" bind:value={value7}>
+                                                    <p> {arr[7]}: {value7} <span id="demo2"> </span> </p>
+                                                </label>
+
+                                                <label class="label"><h3>{Q9}</h3>
+                                                    <div class="rangeslider">
+                                                    <label class="radio2">
+                                                        <input type="range" min = "1" max = "100" bind:value={value8}>
+                                                        <p> {arr[8]}: {value8} <span id="demo2"> </span> </p>
+                                                    </label>
+
+                                                    <label class="label"><h3>{Q10}</h3>
+                                                        <div class="rangeslider">
+                                                        <label class="radio2">
+                                                            <input type="range" min = "1" max = "100" bind:value={value9}>
+                                                            <p> {arr[9]}: {value9} <span id="demo2"> </span> </p>
+                                                        </label>
+
+                                                        <label class="label"><h3>{Q11}</h3>
+                                                            <div class="rangeslider">
+                                                            <label class="radio2">
+                                                                <input type="range" min = "1" max = "100" bind:value={value10}>
+                                                                <p> {arr[10]}: {value10} <span id="demo2"> </span> </p>
+                                                            </label>
                         
                 <div class="field-label">
                     <!-- Left empty for spacing -->
