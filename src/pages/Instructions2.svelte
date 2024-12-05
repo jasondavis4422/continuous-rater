@@ -6,9 +6,15 @@
 
   // Add/remove items here to create more instructions pages
 
-  const instructions = [
-    "If these instructions make sense and you would like to begin, click the button below to proceed to the task. Otherwise please return this HIT.",
-  ];
+ 
+
+  const instructions =
+  ["If you'd like to practice the continuous rating box again, click the Back button. \
+\
+On the next page, you will watch a video lasting 3 minutes and rate one specific emotion moment by moment. Please adjust the rating level to reflect your current emotional experience as you watch. After the video, you will be asked to answer follow-up questions about the video. \
+\
+Please watch it without pausing to ensure better data quality. You can take a break before starting the next clip, after completing the follow-up questions. When you're ready to begin, click the Go to Task button to proceed. Click on the video panel on the next page to start the video.\
+"];
 
   const dispatch = createEventDispatcher();
   let currentPage = 0;
