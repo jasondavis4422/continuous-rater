@@ -2,7 +2,7 @@
 <script>
   // This is the Instructions page. It loops over the instructions array as a user reads and when click to the last page it notifies the main App.svelte component by dispatching a 'finished' event. When the last page of the instructions are reached the forward button turns into a "Take Quiz" button, but currently there is no quiz and it goes straight to the experiment
   import { createEventDispatcher } from "svelte";
-    import { ratingType } from "./Debrief2.svelte";
+  export let ratingType;
 
 
 
