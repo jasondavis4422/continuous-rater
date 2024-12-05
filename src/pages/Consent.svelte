@@ -29,7 +29,8 @@
                 study. We want you to understand what you are being asked to do
                 and what risks and benefits --if any-- are associated with the
                 study. Consent with this form will indicate that you have been
-                informed about the study and that you want to participate.
+                informed about the study and that you want to participate. Please wait
+                for the consent form to load onscreen before reviewing the experiment protocol.
             </p>
             <iframe src={pdfPath} width="100%" height="600px" style="border: none;"></iframe>
 
