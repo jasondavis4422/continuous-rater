@@ -389,12 +389,16 @@
         />
         {:else if currentState === "botcheck-instruct"}
         <Botcheck
+        index={movieIndex}
             on:finished={() => updateState("prolific")}
+            on:passed={() => updateState("instructions2")}
             on:failed={() => failedBot()}
         ></Botcheck>
     {:else if currentState === "botcheck-task"}
-        <Botcheck
+        <Botcheck      
+        index={movieIndex}
             on:finished={() => updateState("prolific")}
+            on:passed={() => updateState("instructions2")}
             on:failed={() => failedBot()}
         ></Botcheck>
         {:else if currentState === "prolific"}

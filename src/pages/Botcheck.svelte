@@ -4,7 +4,7 @@
 	import { createEventDispatcher } from "svelte";
 
 	const dispatch = createEventDispatcher();
-
+    export let index;
 	let answer;
 	let numerals = [1, 2, 3, 4];
 	let words = ["one", "two", "three", "four"];
@@ -21,7 +21,14 @@
 	function handleSubmit() {
 		// success!
 		if (answer == numerals[numId1] + numerals[numId2]) {
+
+		  if (index == 0) {
 			dispatch("finished");
+		  }
+		  else
+		  {
+			dispatch("passed")
+		  }
 		}
 		// incorrect; try again
 		else if (attemptCounter < numAttempts) {
